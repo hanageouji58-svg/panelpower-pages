@@ -15,7 +15,7 @@
 <p class="eyebrow">Privacy Policy</p>
 <h1>Privacy Policy</h1>
 <p class="lead">How PanelPower handles user information.</p>
-<p class="updated">Established: July 14, 2026 / Last revised: August 26, 2026</p>
+<p class="updated">Established: July 14, 2026 / Last revised: October 22, 2026</p>
 </div>
 <article class="document">
 <section>
@@ -52,8 +52,20 @@
 <h3>2.3 Information received during authentication</h3>
 <p>When Google Sign-In or Sign in with Apple is used, the Service may receive identifying information necessary for authentication, a display name, email address, profile image and other information from the selected authentication service. If a user selects “Hide My Email” with Sign in with Apple, the Service may receive a forwarding email address issued by Apple.</p>
 <h3>2.4 In-app purchase information</h3>
-<p>In-app purchases to support development are processed through Apple’s StoreKit. The Operator does not transmit or store Apple Account information, payment methods, full purchase receipts or transaction identifiers in Firebase or other servers operated by the Operator.</p>
+<p>In-app purchases to support development are processed through the App Store (StoreKit) on iOS and Google Play’s billing system on Android. For purchases through either store, the Operator does not transmit or store payment information, full purchase receipts or transaction identifiers in Firebase or other servers operated by the Operator.</p>
 <p>To prevent duplicate purchase completion screens and safely resume unfinished purchase processing, a hash value generated from transaction information that is difficult to reverse may be stored on the device. This information is used only on the device and is not used for advertising, user tracking, Rankings or similar purposes.</p>
+<h3>2.5 Training records</h3>
+<p>Training records, including exercises, weights, repetitions, sets, RPE, rest durations, routines and notes, are stored only in the app’s database on the device and are not sent to the Operator’s servers. However, training details and routines that a user shares in chat are stored and displayed as chat content in the Room where they are shared.</p>
+<h3>2.6 Room chat</h3>
+<p>For Room chat, the Service stores messages, shared training details and routines, message reactions, display names and images used in chat, automatic PR update posts, report contents and information about blocked users.</p>
+<h3>2.7 Notification information</h3>
+<p>To send push notifications, the Service stores device notification tokens, Firebase Installations identifiers, device type (iOS / Android), app version, notification permission status, the app’s display language and notification settings for each Room. Rest timer notifications are scheduled on the device and are not sent to the server.</p>
+<h3>2.8 Announcements and monthly summaries</h3>
+<p>The Service stores delivery and read status for announcements from the Operator, and monthly summaries for Rooms the user belongs to.</p>
+<h3>2.9 Connected apps</h3>
+<p>Only when a user enables the connection, the Service receives training records, achievements and similar data from Squatdegrees, a connected app provided by the Operator, and displays them in Rankings and similar features. Connected app data can be deleted from the app.</p>
+<h3>2.10 Display language</h3>
+<p>The display language selected in Settings is stored on the device. It is also sent to the server as part of the notification information described above to select the language of notifications.</p>
 </section>
 <section>
 <h2>3. Purposes of use</h2>
@@ -64,6 +76,9 @@
 <li>Calculating and displaying IPF Points, GL Points, Total and Rankings</li>
 <li>Creating, joining, managing and displaying Public Rooms, Private Rooms and Legacy Rooms</li>
 <li>Providing shared features such as Room Rankings, reactions and Activity</li>
+<li>Providing chat and sharing features</li>
+<li>Delivering push notifications and announcements</li>
+<li>Responding to reports and maintaining safety</li>
 <li>Linking existing Legacy records to user accounts using Claim Codes</li>
 <li>Entering and synchronizing records and maintaining consistency between Kiosk and the Service</li>
 <li>Responding to inquiries, assisting with account deletion and addressing defects</li>
@@ -100,7 +115,10 @@
 <li><strong>Cloud Functions:</strong> Ranking aggregation, Claim processing, data synchronization, account deletion and other server processing</li>
 <li><strong>Google Sign-In:</strong> Sign-in using a Google account</li>
 <li><strong>Sign in with Apple:</strong> Sign-in using an Apple Account</li>
-<li><strong>App Store / StoreKit:</strong> In-app purchase product display, payment and purchase completion processing</li>
+<li><strong>Firebase Cloud Messaging:</strong> Push notifications (via Apple Push Notification service on iOS)</li>
+<li><strong>Firebase Installations:</strong> Device identification for notifications</li>
+<li><strong>App Store / StoreKit:</strong> In-app purchase product display, payment and purchase completion processing on iOS</li>
+<li><strong>Google Play’s billing system:</strong> In-app purchase product display, payment and purchase completion processing on Android</li>
 </ul>
 <p>These services may process information under their providers’ terms and privacy policies. The Operator does not sell user information to third parties, except as required by law.</p>
 </section>
@@ -130,10 +148,18 @@
 <li>Join requests, invitations and other related data linked to the user</li>
 <li>PRs, body weight, history and related data linked to the user in claimed Legacy records</li>
 <li>Claim Codes issued or used by the user and related information</li>
+<li>Chat messages sent by the user and reactions to those messages, reactions to the user, and automatic posts about the user’s PR updates</li>
+<li>Notification device registrations</li>
+<li>The user’s announcements</li>
+<li>Block information (users blocked by the user and blocks of the user by others)</li>
+<li>Connected app data</li>
+<li>The user’s training records stored on the device</li>
 <li>The user’s Firebase Authentication account</li>
 </ul>
+<p>Training records stored on the device are also deleted from the device when the account is deleted.</p>
 <h3>10.2 Data not deleted</h3>
 <p>Deleting a user’s account does not delete Legacy Rooms themselves, other members, other users’ accounts or competition records belonging to other users. Room member counts, latest Activity displays and similar information may be adjusted to keep Rooms operating. A Room with only the user as a member may itself be deleted according to the app’s specifications.</p>
+<p>Reports are retained for safety purposes. The deleted user’s author name included in a report is replaced with “削除済みユーザー” (“Deleted user”), and their profile image is removed.</p>
 <h3>10.3 Continued server-side processing</h3>
 <p>If there is a large amount of data to delete or depending on network conditions and other factors, deletion may continue on the server after the app screen is closed. Processing occurs in stages and may be retried after temporary failures. Some data may remain visible between the start and completion of deletion.</p>
 <h3>10.4 Revoking Sign in with Apple authorization</h3>
